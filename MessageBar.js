@@ -99,7 +99,7 @@ class MessageBar extends Component {
       /* Number of Lines for Title and Message */
       titleNumberOfLines: (props.titleNumberOfLines == undefined) ? 1 : props.titleNumberOfLines,
       messageNumberOfLines: (props.messageNumberOfLines == undefined) ? 2 : props.messageNumberOfLines,
-      linkNumberOfLines: (props.linkNumberOfLines == undefined) ? 1 : props.linkNumberOfLines,
+      linkNumberOfLines: (props.linkNumberOfLines == undefined) ? 2 : props.linkNumberOfLines,
       /* Style for the text elements and the avatar */
       titleStyle: props.titleStyle || { color: 'white', fontSize: 18, fontWeight: 'bold' },
       messageStyle: props.messageStyle || { color: 'white', fontSize: 16 },
@@ -368,14 +368,14 @@ class MessageBar extends Component {
 
     return (
       <Animated.View style={{ transform: this.animationTypeTransform, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, right: this.state.viewRightOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
-        <TouchableOpacity onPress={()=>{this._alertTapped()}} style={{ flex: 1 }}>
-          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', padding: 10 }} >
+        <TouchableOpacity onPress={()=>{this._alertTapped()}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }} >
             { this.renderImage() }
-            <View  style={{ flexDirection: 'column', alignSelf: 'stretch', justifyContent: 'center', marginLeft: 10 }} >
+            <View  style={{ flex: 0.8, flexDirection: 'column', alignSelf: 'stretch', justifyContent: 'center', marginRight: 10 }} >
               { this.renderTitle() }
               { this.renderMessage() }
             </View>
-            <View style={{ flexDirection: 'row', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center' }} >
+            <View style={{ flex: 0.2, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }} >
               { this.renderLink() }
             </View>
           </View>
@@ -435,3 +435,4 @@ class MessageBar extends Component {
 
 
 module.exports = MessageBar;
+
