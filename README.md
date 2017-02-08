@@ -210,6 +210,7 @@ shouldHideOnTap       | Bool     | true                 | Tell the MessageBar wh
 onTapped              | Function |                      | Callback function after alert is tapped
 onShow                | Function |                      | Callback function after alert is shown
 onHide                | Function |                      | Callback function after alert is hidden
+onPressLink           | Function |                      | Action when pressing the link, note: the Funk onPress will only have effect if link other than null
 stylesheetInfo        | Object   | { backgroundColor: '#007bff', strokeColor: '#006acd' } | Background color and line stroke colors of the alert when alertType is equals to `info`
 stylesheetSuccess     | Object   | { backgroundColor: 'darkgreen', strokeColor: '#b40000' } | Background color and line stroke colors of the alert when alertType is equals to `success`
 stylesheetWarning     | Object   | { backgroundColor: '#ff9c00', strokeColor: '#f29400' } | Background color and line stroke colors of the alert when alertType is equals to `warning`
@@ -230,6 +231,7 @@ messageNumberOfLines  | Number   | 2                    | Number of lines of the
 avatarStyle           | Style    | { height: 40, width: 40, borderRadius: 20, alignSelf: 'center' } | Style of the icon/avatar
 titleStyle            | Style    | { color: 'white', fontSize: 18, fontWeight: 'bold' } | Style of the title
 messageStyle          | Style    | { color: 'white', fontSize: 16 } | Style of the message
+linkStyle             | Style    | { color: 'white', fontSize: 16 } | Style of the link
 position              | String   | top                  | Define the position of the alert, can be `top` or `right`
 animationType         | String   | SlideFromTop         | Define the way the alert is animated on the view, can be `SlideFromTop`, `SlideFromBottom`, `SlideFromLeft` or `SlideFromRight`. If no value is specified, the animation type is selected for you based on the `position`; `SlideFromTop` if `position` is equal to `top`, `SlideFromBottom` if `position` is equal to `bottom`. The alert will then be smoothly displayed
 
