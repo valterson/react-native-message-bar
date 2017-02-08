@@ -59,6 +59,7 @@ class MessageBar extends Component {
       /* Cusomisation of the alert: Title, Message, Icon URL, Alert alertType (error, success, warning, info), Duration for Alert keep shown */
       title: props.title,
       message: props.message,
+      link: props.link,
       avatar: props.avatar,
       alertType: props.alertType || 'info',
       duration: props.duration || 3000,
@@ -71,7 +72,7 @@ class MessageBar extends Component {
       onTapped: props.onTapped,
       onShow: props.onShow,
       onHide: props.onHide,
-
+      onPressLink: props.onPressLink,
       /* Stylesheets */
       stylesheetInfo: props.stylesheetInfo || { backgroundColor: '#007bff', strokeColor: '#006acd' }, // Default are blue colors
       stylesheetSuccess: props.stylesheetSuccess || { backgroundColor: 'darkgreen', strokeColor: '#b40000' }, // Default are Green colors
@@ -98,12 +99,12 @@ class MessageBar extends Component {
       /* Number of Lines for Title and Message */
       titleNumberOfLines: (props.titleNumberOfLines == undefined) ? 1 : props.titleNumberOfLines,
       messageNumberOfLines: (props.messageNumberOfLines == undefined) ? 2 : props.messageNumberOfLines,
-
+      linkNumberOfLines: (props.linkNumberOfLines == undefined) ? 1 : props.linkNumberOfLines,
       /* Style for the text elements and the avatar */
       titleStyle: props.titleStyle || { color: 'white', fontSize: 18, fontWeight: 'bold' },
       messageStyle: props.messageStyle || { color: 'white', fontSize: 16 },
       avatarStyle: props.avatarStyle || { height: 40, width: 40, borderRadius: 20 },
-
+      linkStyle: props.linkStyle || { color: 'white', fontSize: 18, fontWeight: 'bold' },
       /* Position of the alert and Animation Type the alert is shown */
       position: props.position || 'top',
       animationType: props.animationType,
@@ -230,6 +231,11 @@ class MessageBar extends Component {
     }
   }
 
+  _onPressLink() {
+    if (this.state.onPressLink) {
+      this.state.onPressLink();
+    }
+  }
 
   /*
   * Change the background color and the line stroke color depending on the alertType
@@ -363,11 +369,14 @@ class MessageBar extends Component {
     return (
       <Animated.View style={{ transform: this.animationTypeTransform, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, right: this.state.viewRightOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
         <TouchableOpacity onPress={()=>{this._alertTapped()}} style={{ flex: 1 }}>
-          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end', padding: 10 }} >
+          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', padding: 10 }} >
             { this.renderImage() }
-            <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'stretch', justifyContent: 'center', marginLeft: 10 }} >
+            <View  style={{ flexDirection: 'column', alignSelf: 'stretch', justifyContent: 'center', marginLeft: 10 }} >
               { this.renderTitle() }
               { this.renderMessage() }
+            </View>
+            <View style={{ flexDirection: 'row', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center' }} >
+              { this.renderLink() }
             </View>
           </View>
         </TouchableOpacity>
@@ -413,6 +422,15 @@ class MessageBar extends Component {
     }
   }
 
+  renderLink() {
+    if (this.state.link != null) {
+      return (
+        <Text numberOfLines={this.state.linkNumberOfLines} style={this.state.linkStyle} onPress={() => this._onPressLink()}>
+          { this.state.link }
+        </Text>
+      );
+    }
+  }
 }
 
 
