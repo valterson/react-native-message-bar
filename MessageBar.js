@@ -367,9 +367,9 @@ class MessageBar extends Component {
     this._apllyAnimationTypeTransformation();
 
     return (
-      <Animated.View style={{ transform: this.animationTypeTransform, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, right: this.state.viewRightOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
+      <Animated.View style={{ transform: this.animationTypeTransform, height: 56, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, right: this.state.viewRightOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
         <TouchableOpacity onPress={()=>{this._alertTapped()}}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }} >
+          <View style={{ flexDirection: 'row', alignItems: 'center', padding: 15 }} >
             { this.renderImage() }
             <View  style={{ flex: 0.8, flexDirection: 'column', alignSelf: 'stretch', justifyContent: 'center', marginRight: 10 }} >
               { this.renderTitle() }
@@ -435,4 +435,3 @@ class MessageBar extends Component {
 
 
 module.exports = MessageBar;
-
