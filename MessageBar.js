@@ -57,7 +57,7 @@ class MessageBar extends Component {
       backgroundColor: '#007bff', // default value : blue
       strokeColor: '#006acd', // default value : blue
       animationTypeTransform: 'SlideFromTop', // default value
-
+      height: props.height || 56,
       /* Cusomisation of the alert: Title, Message, Icon URL, Alert alertType (error, success, warning, info), Duration for Alert keep shown */
       title: props.title,
       message: props.message,
@@ -369,7 +369,7 @@ class MessageBar extends Component {
     this._apllyAnimationTypeTransformation();
 
     return (
-      <Animated.View style={{ transform: this.animationTypeTransform, height: 56, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, right: this.state.viewRightOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
+      <Animated.View style={{ transform: this.animationTypeTransform, height: this.state.height, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, right: this.state.viewRightOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
         <TouchableOpacity onPress={()=>{this._alertTapped()}}>
           <View style={{ flexDirection: 'row', alignItems: 'center', padding: 15 }} >
             { this.renderImage() }
