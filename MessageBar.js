@@ -405,7 +405,7 @@ class MessageBar extends Component {
   }
 
   renderTitle() {
-    if (this.state.title != null) {
+    if (this.state.title != null && this.state.title.length > 0) {
       return (
         <Text numberOfLines={this.state.titleNumberOfLines} style={this.state.titleStyle}>
           { this.state.title }
