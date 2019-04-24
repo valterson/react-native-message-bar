@@ -15,6 +15,8 @@ import {
   Animated,
   Dimensions,
   Image,
+  StatusBar,
+  Platform,
 } from 'react-native';
 
 let windowWidth = Dimensions.get('window').width
@@ -319,12 +321,15 @@ class MessageBar extends Component {
         animationType = 'SlideFromTop';
       }
     }
-
+    let windowHeightFinal = windowHeight
+    if(Platform.OS === 'android') {
+      windowHeightFinal = windowHeightFinal + StatusBar.currentHeight
+    }
     switch (animationType) {
       case 'SlideFromTop':
          var animationY = this.animatedValue.interpolate({
           inputRange: [0, 1],
-          outputRange: [-windowHeight, 0]
+          outputRange: [-windowHeightFinal, 0]
         });
         this.animationTypeTransform = [{ translateY: animationY }];
         break;
