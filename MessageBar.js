@@ -323,7 +323,7 @@ class MessageBar extends Component {
     }
     let windowHeightFinal = windowHeight
     if(Platform.OS === 'android') {
-      windowHeightFinal = windowHeightFinal + StatusBar.currentHeight
+      windowHeightFinal = windowHeightFinal + StatusBar.currentHeight * 4
     }
     switch (animationType) {
       case 'SlideFromTop':
