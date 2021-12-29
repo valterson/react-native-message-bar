@@ -36,10 +36,10 @@ class MessageBar extends Component {
     this.state = this.getStateByProps(props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps && Object.keys(nextProps).length > 0) {
       this.setNewState(nextProps);
-     }
+    }
   }
 
   setNewState(state) {
